@@ -1,6 +1,7 @@
 package io.nivad.billing.sample.nonconsumable;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mBillingProcessor = new BillingProcessor(this, BAZAAR_RSA_KEY, NIVAD_APPLICATION_ID, NIVAD_APPLICATION_SECRET, this);
 
         updateText();
+        setupButtons();
     }
 
     // کلیک روی دکمه‌ی خرید
@@ -121,8 +123,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         TextView tvStatus = (TextView) findViewById(R.id.tvStatus);
         if (isFullVersion()) {
             tvStatus.setText(R.string.you_have_full_version);
+            tvStatus.setTextColor(0xff11ff11);
         } else {
             tvStatus.setText(R.string.you_have_demo_version);
+            tvStatus.setTextColor(0xffff1111);
         }
+    }
+
+    private void setupButtons() {
+        TextView tvIntro = (TextView) findViewById(R.id.tvIntro);
+        tvIntro.setClickable(true);
+        tvIntro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://nivad.io/billing/";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
+
+        Button btnSourceCode = (Button) findViewById(R.id.btnSourceCode);
+        btnSourceCode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String url = "https://github.com/nivadcloud/InAppBillingAndroidNonConsumableSample";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+            }
+        });
     }
 }
