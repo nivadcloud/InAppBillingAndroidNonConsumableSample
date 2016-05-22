@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">InAppBillingNonConsumableSample</string>
+    <string name="nivad_protects_this_application">این برنامه توسط نیواد محافظت می‌شود و قابل هک نیست</string>
+    <string name="intro">این برنامه یک نمونه است برای این که چگونه از کتابخانه‌ی پرداخت درون برنامه‌ای نیواد استفاده کنید. این برنامه نمونه‌ی برنامه‌ای است که دو نسخه‌ی دمو و کامل دارد و با خرید نسخه‌ی کامل امکانات برنامه به صورت کامل قابل استفاده می‌شوند.</string>
+    <string name="you_have_demo_version">برنامه‌ی شما نسخه‌ی دمو است. برای خرید نسخه‌ی کامل روی دکمه‌ی زیر کلیک کنید</string>
+    <string name="you_have_full_version">برنامه‌ی شما نسخه‌ی کامل است.</string>
+    <string name="buy_full_version_button">خرید نسخه‌ی کامل</string>
 </resources>

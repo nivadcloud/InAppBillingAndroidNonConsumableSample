@@ -1,4 +1,4 @@
-package nonconsumable.sample.billing.nivad.io.inappbillingnonconsumablesample;
+package nonconsumable.sample.billing.nivad.io.nonconsumable;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
