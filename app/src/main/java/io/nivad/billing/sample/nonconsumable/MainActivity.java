@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             // خرید با موفقیت انجام شده. در shared preferences ذخیره می‌کنیم تا در بخش‌های دیگر برنامه
             // بتوانیم چک کنیم که کاربر نسخه‌ی کامل را خریده یا نه.
             PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
-                    .edit().putBoolean("is_full_version", true);
+                    .edit().putBoolean("is_full_version", true).apply();
         }
         updateText();
     }
@@ -82,10 +82,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onPurchaseHistoryRestored() {
         if (mBillingProcessor.isPurchased(FULL_VERSION_SKU)) {
             PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
-                    .edit().putBoolean("is_full_version", true);
+                    .edit().putBoolean("is_full_version", true).apply();
         } else {
             PreferenceManager.getDefaultSharedPreferences(MainActivity.this)
-                    .edit().putBoolean("is_full_version", false);
+                    .edit().putBoolean("is_full_version", false).apply();
         }
         updateText();
     }
