@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public boolean isFullVersion() {
         // از shared preferences چک می‌کند که کاربر نسخه‌ی کامل را خریده یا نه
-        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("is_full_verison", false);
+        return PreferenceManager.getDefaultSharedPreferences(this).getBoolean("is_full_version", false);
     }
 
     @Override
