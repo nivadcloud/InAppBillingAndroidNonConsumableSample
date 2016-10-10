@@ -19,8 +19,17 @@ android {
     }
 }
 
+repositories {
+    jcenter()
+    maven { url 'http://repo.nivad.io:8081/artifactory/list/libs-release' }
+}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    // اگر فایل jar کتابخانه را دریافت کرده اید و در پوشهٔ app/libs قرار داده‌اید خط زیر را از حالت کامنت خارج کنید
+//    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile('io.nivad.iab:library:+') {
+        transitive = true
+    }
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 }
