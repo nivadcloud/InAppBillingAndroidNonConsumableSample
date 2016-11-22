@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 import io.nivad.iab.BillingProcessor;
+import io.nivad.iab.MarketName;
 import io.nivad.iab.TransactionDetails;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, BillingProcessor.IBillingHandler {
@@ -43,7 +44,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnBuy.setEnabled(false);
         btnBuy.setOnClickListener(this);
 
-        mBillingProcessor = new BillingProcessor(this, BAZAAR_RSA_KEY, NIVAD_APPLICATION_ID, NIVAD_APPLICATION_SECRET, this);
+        mBillingProcessor = new BillingProcessor(
+            this, 
+            BAZAAR_RSA_KEY, 
+            NIVAD_APPLICATION_ID, 
+            NIVAD_APPLICATION_SECRET,
+            MarketName.CAFE_BAZAAR, 
+            this
+        );
 
         updateText();
         setupButtons();
@@ -52,11 +60,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     // کلیک روی دکمه‌ی خرید
     @Override
     public void onClick(View v) {
-        mBillingProcessor.purchase(this, FULL_VERSION_SKU);
+        mBillingProcessor.purchase(this, FULL_VERSION_SKU, "Webhook payload");
+        // پارامتر سوم اختیاری است. برای اطلاعات بیشتر دربارهٔ وب‌هوک‌های نیواد و نقش این پارامتر در وب‌هوک‌ها به آدرس زیر مراجعه کنید:
+        // https://nivad.io/docs/webhooks/
     }
 
     // ---------------------------------------------------------------
     // ۴ تابع اصلی برنامه که خرید‌ها را هندل می‌کنند
+    // توضیحات مربوط به این توابع را در مستندات نیواد بخوانید:
+    // https://nivad.io/docs/iab-methods-and-error-codes/
 
     // وقتی برنامه به بازار متصل و آماده‌ی خرید می‌شود
     @Override
